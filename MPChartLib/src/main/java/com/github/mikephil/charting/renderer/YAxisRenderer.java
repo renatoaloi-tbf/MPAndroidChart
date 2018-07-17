@@ -349,7 +349,12 @@ public class YAxisRenderer extends AxisRenderer {
                     c.drawRoundRect(leftPos, topPos, rightPos, bottomPos,
                             4.0f, 4.0f, mLimitLinePaint);
                     mLimitLinePaint.setColor(l.getTextColor());
-                    c.drawText(label, leftPos + 20, topPos + 30, mLimitLinePaint);
+
+                    float xoffset = mYAxis.getXOffset();
+                    float xPos = mViewPortHandler.offsetLeft() - xoffset;
+                    mLimitLinePaint.setTextAlign(Align.RIGHT);
+                    c.drawText(label, xPos, topPos + 30, mLimitLinePaint);
+                    //c.drawText(label, leftPos + 20, topPos + 30, mLimitLinePaint);
 
                 } else {
 
