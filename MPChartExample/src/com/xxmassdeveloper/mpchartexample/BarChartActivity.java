@@ -100,20 +100,27 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         LimitLine lm = new LimitLine(20, "20,0");
-        lm.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
+        lm.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_BOX);
         lm.setTextColor(0xFFFFFFFF);
         lm.setLineColor(0xFFFF8600);
         lm.setLineWidth(1);
         leftAxis.addLimitLine(lm);
 
         YAxis rightAxis = mChart.getAxisRight();
-        rightAxis.setEnabled(false);
-//        rightAxis.setDrawGridLines(false);
-//        rightAxis.setTypeface(mTfLight);
-//        rightAxis.setLabelCount(8, false);
-//        rightAxis.setValueFormatter(custom);
-//        rightAxis.setSpaceTop(15f);
-//        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        //rightAxis.setEnabled(false);
+        rightAxis.setDrawGridLines(false);
+        rightAxis.setTypeface(mTfLight);
+        rightAxis.setLabelCount(8, false);
+        rightAxis.setValueFormatter(custom);
+        rightAxis.setSpaceTop(15f);
+        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+
+        lm = new LimitLine(25, "25,0");
+        lm.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOX);
+        lm.setTextColor(0xFFFFFFFF);
+        lm.setLineColor(0xFFFF8600);
+        lm.setLineWidth(1);
+        leftAxis.addLimitLine(lm);
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
