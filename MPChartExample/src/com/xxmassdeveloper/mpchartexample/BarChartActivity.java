@@ -39,6 +39,7 @@ import com.xxmassdeveloper.mpchartexample.custom.XYMarkerView;
 import com.xxmassdeveloper.mpchartexample.notimportant.DemoBase;
 
 import java.util.ArrayList;
+import com.github.mikephil.charting.components.LimitLine;
 
 public class BarChartActivity extends DemoBase implements OnSeekBarChangeListener,
         OnChartValueSelectedListener {
@@ -98,13 +99,21 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         leftAxis.setSpaceTop(15f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
+        LimitLine lm = new LimitLine(20, "20,0");
+        lm.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_TOP);
+        lm.setTextColor(0xFFFFFFFF);
+        lm.setLineColor(0xFFFF8600);
+        lm.setLineWidth(1);
+        leftAxis.addLimitLine(lm);
+
         YAxis rightAxis = mChart.getAxisRight();
-        rightAxis.setDrawGridLines(false);
-        rightAxis.setTypeface(mTfLight);
-        rightAxis.setLabelCount(8, false);
-        rightAxis.setValueFormatter(custom);
-        rightAxis.setSpaceTop(15f);
-        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        rightAxis.setEnabled(false);
+//        rightAxis.setDrawGridLines(false);
+//        rightAxis.setTypeface(mTfLight);
+//        rightAxis.setLabelCount(8, false);
+//        rightAxis.setValueFormatter(custom);
+//        rightAxis.setSpaceTop(15f);
+//        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
