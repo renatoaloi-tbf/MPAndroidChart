@@ -11,6 +11,7 @@ import com.github.mikephil.charting.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Base-class of all axes (previously called labels).
@@ -468,8 +469,28 @@ public abstract class AxisBase extends ComponentBase {
 
         if (index < 0 || index >= mEntries.length)
             return "";
-        else
-            return getValueFormatter().getFormattedValue(mEntries[index], this);
+        else {
+            if (this instanceof YAxis) {
+                String fmt = "";
+                if (mEntries.length > 0)
+                    fmt = getValueFormatter().getFormattedValue(mEntries[0], this);
+
+                if (fmt.length() > 1) {
+
+                    if (fmt.charAt(0) == 'R' && fmt.charAt(1) == '$')
+                        return String.format(new Locale("pt", "BR"), "R$%.2f", mEntries[index]);
+
+                    if (fmt.charAt(0) == 'F' && fmt.charAt(1) == '|')
+                        return String.format(new Locale("pt", "BR"),
+                                "%." + fmt.charAt(2) + "f", mEntries[index]);
+                }
+                else
+                    return String.format(new Locale("pt", "BR"), "%.2f", mEntries[index]);
+            }
+            else
+                return getValueFormatter().getFormattedValue(mEntries[index], this);
+        }
+        return "";
     }
 
     /**

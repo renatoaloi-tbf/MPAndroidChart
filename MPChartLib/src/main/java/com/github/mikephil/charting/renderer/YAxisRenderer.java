@@ -344,10 +344,10 @@ public class YAxisRenderer extends AxisRenderer {
 
                     mLimitLinePaint.setTextAlign(Align.RIGHT);
 
-                    float leftPos = mViewPortHandler.contentLeft() - 85;
+                    float leftPos = (float)(mViewPortHandler.contentLeft() - (mViewPortHandler.contentLeft() * 0.95));
                     float topPos = pts[1] - 20;
                     float bottomPos = topPos + 40;
-                    float rightPos = leftPos + 85;
+                    float rightPos = mViewPortHandler.contentLeft(); //leftPos + 85;
                     mLimitLinePaint.setColor(l.getLineColor());
                     c.drawRoundRect(leftPos, topPos, rightPos, bottomPos,
                             4.0f, 4.0f, mLimitLinePaint);
@@ -364,7 +364,8 @@ public class YAxisRenderer extends AxisRenderer {
                     float leftPos = mViewPortHandler.contentRight();
                     float topPos = pts[1] - 20;
                     float bottomPos = topPos + 40;
-                    float rightPos = leftPos + 98;
+                    float rightWidth = (mViewPortHandler.getChartWidth() - mViewPortHandler.contentRight());
+                    float rightPos = (float)(mViewPortHandler.getChartWidth() - (rightWidth - (rightWidth * 0.95)));
                     mLimitLinePaint.setColor(l.getLineColor());
                     c.drawRoundRect(leftPos, topPos, rightPos, bottomPos,
                             4.0f, 4.0f, mLimitLinePaint);

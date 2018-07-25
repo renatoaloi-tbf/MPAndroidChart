@@ -27,6 +27,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.IDataSet;
@@ -99,6 +100,12 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         leftAxis.setSpaceTop(15f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
+        IndexAxisValueFormatter il = new IndexAxisValueFormatter();
+        //String s[] = {"R$ 1,08", "R$ 1,09", "R$ 1,1", "R$ 1,11", "R$ 1,12", "R$ 1,01", "R$ 1,02", "R$ 1,03", "R$ 1,04", "R$ 1,05", "R$ 1,06", "R$ 1,07"};
+        String sl[] = {"F|1", "||"};
+        il.setValues(sl);
+        leftAxis.setValueFormatter(il);
+
         LimitLine lm = new LimitLine(20, "20,0");
         lm.setLabelPosition(LimitLine.LimitLabelPosition.LEFT_BOX);
         lm.setTextColor(0xFFFFFFFF);
@@ -114,6 +121,13 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         rightAxis.setValueFormatter(custom);
         rightAxis.setSpaceTop(15f);
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+
+
+        IndexAxisValueFormatter i = new IndexAxisValueFormatter();
+        //String s[] = {"R$ 1,08", "R$ 1,09", "R$ 1,1", "R$ 1,11", "R$ 1,12", "R$ 1,01", "R$ 1,02", "R$ 1,03", "R$ 1,04", "R$ 1,05", "R$ 1,06", "R$ 1,07"};
+        String s[] = {"F|1", "||"};
+        i.setValues(s);
+        rightAxis.setValueFormatter(i);
 
         lm = new LimitLine(25, "25,0");
         lm.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOX);
