@@ -4,9 +4,7 @@
     android:versionCode="55"
     android:versionName="3.0.2" >
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="25" />
+    <uses-sdk android:targetSdkVersion="25" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application

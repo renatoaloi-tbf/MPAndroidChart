@@ -18,6 +18,8 @@ import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
+import java.util.Locale;
+
 /**
  * Superclass of all render classes for the different data types (line, bar, ...).
  *
@@ -149,7 +151,13 @@ public abstract class DataRenderer extends Renderer {
      */
     public void drawValue(Canvas c, IValueFormatter formatter, float value, Entry entry, int dataSetIndex, float x, float y, int color) {
         mValuePaint.setColor(color);
-        c.drawText(formatter.getFormattedValue(value, entry, dataSetIndex, mViewPortHandler), x, y, mValuePaint);
+        String fmt;
+        float ant = mValuePaint.getTextSize();
+        mValuePaint.setTextSize(Utils.convertDpToPixel(10f));
+        fmt = String.format(new Locale("pt", "BR"), "%.2f", value);
+        c.drawText(fmt, x, y, mValuePaint);
+        mValuePaint.setTextSize(ant);
+        //c.drawText(formatter.getFormattedValue(value, entry, dataSetIndex, mViewPortHandler), x, y, mValuePaint);
     }
 
     /**

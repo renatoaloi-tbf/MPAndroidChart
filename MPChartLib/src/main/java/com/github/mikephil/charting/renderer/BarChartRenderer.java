@@ -273,11 +273,21 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                         float val = entry.getY();
 
                         if (dataSet.isDrawValuesEnabled()) {
-                            drawValue(c, dataSet.getValueFormatter(), val, entry, i, x,
-                                    val >= 0 ?
-                                            (buffer.buffer[j + 1] + posOffset) :
-                                            (buffer.buffer[j + 3] + negOffset),
-                                    dataSet.getValueTextColor(j / 4));
+//                            drawValue(c, dataSet.getValueFormatter(), val, entry, i, x,
+//                                    val >= 0 ?
+//                                            (buffer.buffer[j + 1] + posOffset) :
+//                                            (buffer.buffer[j + 3] + negOffset),
+//                                    dataSet.getValueTextColor(j / 4));
+
+                            float y = buffer.buffer[j + 3] - 70;
+                            //float h = c.getHeight();
+                            //float w = c.getWidth();
+
+                            //String s = dataSet.getValueFormatter().getFormattedValue()
+
+                            c.rotate(-90, x + 10, y);
+                            drawValue(c, dataSet.getValueFormatter(), val, entry, i, x, y, Color.WHITE);
+                            c.rotate(90, x + 10, y);
                         }
 
                         if (entry.getIcon() != null && dataSet.isDrawIconsEnabled()) {
