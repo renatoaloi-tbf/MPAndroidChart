@@ -4,8 +4,8 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
     dependencies {
         classpath "io.realm:realm-gradle-plugin:4.2.0"
